@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -42,7 +43,8 @@ public class NotaController {
 	}
 	
 	@GetMapping("/notas")
-	public List<MNota> obtenerNotas(){
-		return service.obtener();
+	public List<MNota> obtenerNotas(Pageable pageable){
+		return service.obtenerPorPaginacion(pageable);
 	}
+
 }

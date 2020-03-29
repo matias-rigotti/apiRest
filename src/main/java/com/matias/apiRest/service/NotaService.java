@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -66,4 +67,9 @@ public class NotaService {
 	public List<MNota> obtenerTitulo(String titulo){
 		return convertidor.convertirLista(repositorio.findByTitulo(titulo));
 	}
+	
+	public List<MNota> obtenerPorPaginacion(Pageable pageable){
+		return convertidor.convertirLista(repositorio.findAll(pageable).getContent());
+	}
+	
 }
